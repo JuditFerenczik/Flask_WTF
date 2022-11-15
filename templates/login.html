@@ -1,30 +1,20 @@
 <!DOCTYPE HTML>
-
+{% extends "index.html" %}
 <html>
 	<head>
-		<title>Login</title>
+		<title>{% block title %}Login{% endblock %}</title>
 	</head>
 	<body>
+	{% block content %}
         <div class="container">
+			<div class="row">
+				<div class="col-sm-8 col-md-3">
 		<h1>Login</h1>
-<form method="POST" action="{{ url_for('login') }}" novalidate>
-    {{ form.csrf_token }}
-
-	<div> {{ form.name.label }}</div>
-	<div>{{ form.name(size=20) }}</div>
-	{% for err in form.name.errors %}
-	<span style="color:red;">{{err }}</span>
-	{% endfor %}
-
-	<div> {{ form.password.label }} </div>
-	<div>	{{ form.password(size=20) }}</div>
-	{% for err in form.password.errors %}
-	<span style="color:red;">{{err }}</span>
-	{% endfor %}
-{{form.submit }}
-
-</form>
+	{{ wtf.quick_form(form,novalidate=True) }}
         <!-- This is where our form will go. -->
+					</div>
+			</div>
         </div>
+	{% endblock %}
 	</body>
 </html>
